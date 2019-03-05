@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="icon_padding">20dp</dimen>
+    <dimen name="default_margin">20dp</dimen>
+    <dimen name="fab_size">65dp</dimen>
+    <dimen name="app_margin">16dp</dimen>
+</resources>

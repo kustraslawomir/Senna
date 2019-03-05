@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "156083658112",
+    "firebase_url": "https://senna-e6f73.firebaseio.com",
+    "project_id": "senna-e6f73",
+    "storage_bucket": "senna-e6f73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156083658112:android:24b759b336066824",
+        "android_client_info": {
+          "package_name": "com.senna"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "156083658112-t73sbajbq81ol95gllkne0c05008fio3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.senna",
+            "certificate_hash": "527c109b3f8c7c595c09138f6b1db1de6b81cfdb"
+          }
+        },
+        {
+          "client_id": "156083658112-8ehhln1g5q447rfae5i7fsc5bfj2gu5f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrIY1QiMYMifyx7K6Xmn_eU0BFS-7zgAs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "156083658112-8ehhln1g5q447rfae5i7fsc5bfj2gu5f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
