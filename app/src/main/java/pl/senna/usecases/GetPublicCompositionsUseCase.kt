@@ -9,7 +9,7 @@ import pl.senna.model.firebase.PublicCompositions
 import timber.log.Timber
 import javax.inject.Inject
 
-class GetDefaultCompositionsUseCase @Inject constructor(private val fireBaseDatabaseModule: FirebaseDatabase) {
+class GetPublicCompositionsUseCase @Inject constructor(private val fireBaseDatabaseModule: FirebaseDatabase) {
 
     fun getPublicCompositions(updateCompositions: (PublicCompositions) -> Unit) {
         val postListener = object : ValueEventListener {

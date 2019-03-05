@@ -4,7 +4,7 @@ import dagger.Component
 import dagger.android.AndroidInjectionModule
 import pl.senna.di.module.*
 import pl.senna.di.scopes.AppScope
-import pl.senna.usecases.GetDefaultCompositionsUseCase
+import pl.senna.usecases.GetPublicCompositionsUseCase
 import pl.senna.usecases.NavigateToMainScreenAfterDelayUseCase
 import pl.senna.view.activity.main.MainViewModel
 import pl.senna.view.activity.splash.SplashViewModel
@@ -25,6 +25,6 @@ interface AppComponent {
 
     fun inject(useCase: NavigateToMainScreenAfterDelayUseCase)
 
-    fun inject(useCase: GetDefaultCompositionsUseCase)
+    fun inject(useCase: GetPublicCompositionsUseCase)
 
 }

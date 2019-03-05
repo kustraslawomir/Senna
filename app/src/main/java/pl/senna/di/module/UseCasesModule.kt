@@ -4,7 +4,7 @@ import com.google.firebase.database.FirebaseDatabase
 import dagger.Module
 import dagger.Provides
 import pl.senna.di.scopes.AppScope
-import pl.senna.usecases.GetDefaultCompositionsUseCase
+import pl.senna.usecases.GetPublicCompositionsUseCase
 import pl.senna.usecases.NavigateToMainScreenAfterDelayUseCase
 
 @Module(includes = [FireBaseDatabaseModule::class])
@@ -12,8 +12,8 @@ class UseCasesModule {
 
     @Provides
     @AppScope
-    fun getDefaultCompositionsUseCase(fireBaseDatabase: FirebaseDatabase): GetDefaultCompositionsUseCase {
-        return GetDefaultCompositionsUseCase(fireBaseDatabase)
+    fun getDefaultCompositionsUseCase(fireBaseDatabase: FirebaseDatabase): GetPublicCompositionsUseCase {
+        return GetPublicCompositionsUseCase(fireBaseDatabase)
     }
 
     @Provides
