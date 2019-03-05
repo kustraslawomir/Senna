@@ -12,7 +12,7 @@ import timber.log.Timber
 class Application : Application() {
 
     companion object {
-        lateinit var appComponent: AppComponent
+        lateinit var component: AppComponent
     }
 
     override fun onCreate() {
@@ -23,7 +23,7 @@ class Application : Application() {
     }
 
     private fun initializeDagger() {
-        appComponent = DaggerAppComponent.builder()
+        component = DaggerAppComponent.builder()
                 .contextModule(ContextModule(applicationContext))
                 .appModule(AppModule(this))
                 .roomModule(RoomModule(this)).build()

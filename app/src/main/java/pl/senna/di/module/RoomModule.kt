@@ -5,13 +5,13 @@ import dagger.Module
 import dagger.Provides
 import pl.senna.Application
 import pl.senna.di.scopes.AppScope
-import pl.senna.repository.local.AppDataBase
+import pl.senna.repository.local.DataBase
 
 @Module
 class RoomModule(application: Application) {
 
-    private val localSource: AppDataBase =
-            Room.databaseBuilder<AppDataBase>(application, AppDataBase::class.java, "db")
+    private val localSource: DataBase =
+            Room.databaseBuilder<DataBase>(application, DataBase::class.java, "db")
                     .allowMainThreadQueries()
                     .fallbackToDestructiveMigration()
                     .build()
@@ -23,5 +23,5 @@ class RoomModule(application: Application) {
 
     @Provides
     @AppScope
-    fun provideUserDao(database: AppDataBase) = database.userDao()
+    fun provideUserDao(database: DataBase) = database.userDao()
 }

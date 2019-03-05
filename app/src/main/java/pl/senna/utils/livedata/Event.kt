@@ -1,6 +1,6 @@
 package pl.senna.utils.livedata
 
-open class Event<out T>(private val content: T) {
+open class Event<out T>(private val value: T) {
 
     private var hasBeenHandled = false
 
@@ -9,9 +9,9 @@ open class Event<out T>(private val content: T) {
             null
         } else {
             hasBeenHandled = true
-            content
+            value
         }
     }
 
-    fun peekContent(): T = content
+    fun peekContent(): T = value
 }
