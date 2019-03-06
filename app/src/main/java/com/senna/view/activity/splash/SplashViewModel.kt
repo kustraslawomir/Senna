@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.senna.Application
 import com.senna.model.firebase.PublicCompositions
 import com.senna.usecases.FetchPublicCompositionsUseCase
-import com.senna.usecases.NavigateToMainScreenAfterDelayUseCase
+import com.senna.usecases.SplashDelayUseCase
 import com.senna.usecases.StorePublicCompositionsUseCase
 import com.senna.utils.livedata.Event
 import javax.inject.Inject
@@ -19,7 +19,7 @@ class SplashViewModel : ViewModel(), LifecycleObserver {
     @Inject
     lateinit var storePublicCompositionsUseCase: StorePublicCompositionsUseCase
     @Inject
-    lateinit var navigateToMainScreenAfterDelayUseCase: NavigateToMainScreenAfterDelayUseCase
+    lateinit var navigateToMainScreenAfterDelayUseCase: SplashDelayUseCase
 
     private val navigateToMainScreenEvent = MutableLiveData<Event<Boolean>>()
 

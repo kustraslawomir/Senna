@@ -4,7 +4,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.android.Main
 import com.senna.utils.Constants
 
-class NavigateToMainScreenAfterDelayUseCase {
+class SplashDelayUseCase {
 
     fun startSplashScreenDelay(onSplashScreenDelayEnded: () -> Unit){
         GlobalScope.launch(Dispatchers.Main) {

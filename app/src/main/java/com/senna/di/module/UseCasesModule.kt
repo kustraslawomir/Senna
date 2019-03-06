@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 import com.senna.di.scopes.AppScope
 import com.senna.usecases.FetchPublicCompositionsUseCase
-import com.senna.usecases.NavigateToMainScreenAfterDelayUseCase
+import com.senna.usecases.SplashDelayUseCase
 
 @Module(includes = [FireBaseDatabaseModule::class])
 class UseCasesModule {
@@ -18,7 +18,7 @@ class UseCasesModule {
 
     @Provides
     @AppScope
-    fun getNavigateToMainScreenAfterDelayUseCase(): NavigateToMainScreenAfterDelayUseCase{
-        return NavigateToMainScreenAfterDelayUseCase()
+    fun getNavigateToMainScreenAfterDelayUseCase(): SplashDelayUseCase{
+        return SplashDelayUseCase()
     }
 }
