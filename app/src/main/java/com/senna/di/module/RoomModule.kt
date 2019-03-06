@@ -24,4 +24,8 @@ class RoomModule(application: Application) {
     @Provides
     @AppScope
     fun provideUserDao(database: DataBase) = database.userDao()
+
+    @Provides
+    @AppScope
+    fun provideCompositionDao(database: DataBase) = database.compositionDao()
 }
