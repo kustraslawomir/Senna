@@ -8,14 +8,14 @@ import com.senna.model.firebase.PublicCompositions
 import timber.log.Timber
 import javax.inject.Inject
 
-class GetPublicCompositionsUseCase @Inject constructor(private val fireBaseDatabaseModule: FirebaseDatabase) {
+class FetchPublicCompositionsUseCase @Inject constructor(private val fireBaseDatabaseModule: FirebaseDatabase) {
 
-    fun getPublicCompositions(updateCompositions: (PublicCompositions) -> Unit) {
+    fun fetchPublicCompositions(onFetchPublicCompositionsEnd: (PublicCompositions) -> Unit) {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val publicCompositions = dataSnapshot.getValue(PublicCompositions::class.java)
                 if (publicCompositions != null) {
-                    updateCompositions(publicCompositions)
+                    onFetchPublicCompositionsEnd(publicCompositions)
                 }
             }
             override fun onCancelled(databaseError: DatabaseError) {

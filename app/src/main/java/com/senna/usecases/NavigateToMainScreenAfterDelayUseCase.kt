@@ -6,10 +6,10 @@ import com.senna.utils.Constants
 
 class NavigateToMainScreenAfterDelayUseCase {
 
-    fun startSplashScreenDelay(navigateToMainScreen: () -> Unit){
+    fun startSplashScreenDelay(onSplashScreenDelayEnded: () -> Unit){
         GlobalScope.launch(Dispatchers.Main) {
             delay(Constants.SPLASH_SCREEN_DELAY)
-            navigateToMainScreen()
+            onSplashScreenDelayEnded()
         }
     }
 }
