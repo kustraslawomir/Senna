@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="pl.senna.com">
+    package="com.senna.com">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="pl.senna.Application"
+        android:name="com.senna.Application"
         android:allowBackup="true"
         android:icon="@mipmap/senna_logo"
         android:label="@string/app_name"
@@ -22,10 +22,10 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name="pl.senna.view.activity.main.NavigationActivity"
+            android:name="com.senna.view.activity.main.NavigationActivity"
             android:windowSoftInputMode="adjustResize" />
 
-        <activity android:name="pl.senna.view.activity.splash.SplashActivity">
+        <activity android:name="com.senna.view.activity.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
