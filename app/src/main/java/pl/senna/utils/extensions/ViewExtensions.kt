@@ -27,6 +27,12 @@ fun View.show() {
     visibility = View.VISIBLE
 }
 
+fun View.shouldBeHideIf(condition : Boolean) {
+    visibility = if (condition)
+        View.GONE
+    else View.VISIBLE
+}
+
 fun View.enable() {
     isEnabled = true
 }
@@ -52,5 +58,3 @@ fun DrawerLayout.isOpen() = this.isDrawerOpen(GravityCompat.START)
 fun DrawerLayout.enable() = this.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
 
 fun DrawerLayout.disable() = this.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-
-
