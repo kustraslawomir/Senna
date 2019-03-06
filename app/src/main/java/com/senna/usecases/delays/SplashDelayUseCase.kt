@@ -1,4 +1,4 @@
-package com.senna.usecases
+package com.senna.usecases.delays
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.android.Main

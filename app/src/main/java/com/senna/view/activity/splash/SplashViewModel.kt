@@ -6,9 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.senna.Application
 import com.senna.model.firebase.PublicCompositions
-import com.senna.usecases.FetchPublicCompositionsUseCase
-import com.senna.usecases.SplashDelayUseCase
-import com.senna.usecases.StorePublicCompositionsUseCase
+import com.senna.usecases.compositions.FetchPublicCompositionsUseCase
+import com.senna.usecases.delays.SplashDelayUseCase
+import com.senna.usecases.compositions.StorePublicCompositionsUseCase
 import com.senna.utils.livedata.Event
 import javax.inject.Inject
 

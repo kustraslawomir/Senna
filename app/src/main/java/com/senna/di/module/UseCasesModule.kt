@@ -4,8 +4,8 @@ import com.google.firebase.database.FirebaseDatabase
 import dagger.Module
 import dagger.Provides
 import com.senna.di.scopes.AppScope
-import com.senna.usecases.FetchPublicCompositionsUseCase
-import com.senna.usecases.SplashDelayUseCase
+import com.senna.usecases.compositions.FetchPublicCompositionsUseCase
+import com.senna.usecases.delays.SplashDelayUseCase
 
 @Module(includes = [FireBaseDatabaseModule::class])
 class UseCasesModule {
@@ -18,7 +18,7 @@ class UseCasesModule {
 
     @Provides
     @AppScope
-    fun getNavigateToMainScreenAfterDelayUseCase(): SplashDelayUseCase{
+    fun getNavigateToMainScreenAfterDelayUseCase(): SplashDelayUseCase {
         return SplashDelayUseCase()
     }
 }

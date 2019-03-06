@@ -1,4 +1,4 @@
-package com.senna.usecases
+package com.senna.usecases.compositions
 
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

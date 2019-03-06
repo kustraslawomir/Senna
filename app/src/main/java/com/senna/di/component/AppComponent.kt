@@ -4,8 +4,8 @@ import dagger.Component
 import dagger.android.AndroidInjectionModule
 import com.senna.di.module.*
 import com.senna.di.scopes.AppScope
-import com.senna.usecases.FetchPublicCompositionsUseCase
-import com.senna.usecases.SplashDelayUseCase
+import com.senna.usecases.compositions.FetchPublicCompositionsUseCase
+import com.senna.usecases.delays.SplashDelayUseCase
 import com.senna.view.activity.main.MainViewModel
 import com.senna.view.activity.splash.SplashViewModel
 import com.senna.view.fragment.compositions.CompositionsViewModel

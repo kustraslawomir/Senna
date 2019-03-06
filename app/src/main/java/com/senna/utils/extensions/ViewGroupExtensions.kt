@@ -3,7 +3,7 @@ package com.senna.utils.extensions
 import android.content.res.Resources
 import android.widget.FrameLayout
 
-fun FrameLayout.setPaddingIfHaveNavBar(resources: Resources){
+fun FrameLayout.setPaddingFromNavBar(resources: Resources){
     if (hasNavBar(resources)) {
         this.setPadding(0, 0, 0, getNavViewHeight(resources))
     } else {

@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.fragment_compositions.*
 import com.senna.com.R
 import com.senna.utils.extensions.listen
-import com.senna.utils.extensions.setPaddingIfHaveNavBar
+import com.senna.utils.extensions.setPaddingFromNavBar
 import com.senna.utils.extensions.startEnterAnimation
 import com.senna.view.activity.main.NavigationActivity
 import com.senna.view.fragment.compositions.adapter.CompositionsAdapter
@@ -24,8 +24,7 @@ class CompositionsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        container.setPaddingIfHaveNavBar(resources)
-
+        container.setPaddingFromNavBar(resources)
         val viewModel = ViewModelProviders.of(activity).get(CompositionsViewModel::class.java)
 
         val adapter = CompositionsAdapter()
@@ -42,4 +41,3 @@ class CompositionsFragment : Fragment() {
         activity = context as NavigationActivity
     }
 }
-
