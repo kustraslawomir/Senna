@@ -202,4 +202,5 @@
     <color name="textColorLight">#b1b1b1</color>
     <color name="separatorColor">#b1b1b1</color>
     <color name="default_background_color">#fff3f3f3</color>
+    <color name="violet">#554ccb</color>
 </resources>
