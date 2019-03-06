@@ -8,13 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.senna.com.R
-import com.senna.model.firebase.FirebaseComposition
+import com.senna.model.databse.Composition
 import com.senna.utils.extensions.shouldBeHideIf
 import timber.log.Timber
 
 class CompositionsAdapter : RecyclerView.Adapter<CompositionsAdapter.ViewHolder>() {
 
-    private var compositions: List<FirebaseComposition> = arrayListOf()
+    private var compositions: List<Composition> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompositionsAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_composition, parent, false)
@@ -33,7 +33,7 @@ class CompositionsAdapter : RecyclerView.Adapter<CompositionsAdapter.ViewHolder>
 
     private fun thisIsLastElement(position: Int) = position == compositions.size-1
 
-    fun setCompositions(compositions: List<FirebaseComposition>) {
+    fun setCompositions(compositions: List<Composition>) {
         this.compositions = compositions
     }
 

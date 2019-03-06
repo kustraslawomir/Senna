@@ -31,7 +31,7 @@ class CompositionsFragment : Fragment() {
         val adapter = CompositionsAdapter()
         compositionsRecyclerView.adapter = adapter
 
-        viewModel.getCompositions().listen(this) { compositions ->
+        viewModel.getCompositionsLiveData().listen(this) { compositions ->
             adapter.setCompositions(compositions = compositions)
             compositionsRecyclerView.startEnterAnimation()
         }
