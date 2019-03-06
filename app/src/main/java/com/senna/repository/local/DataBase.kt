@@ -9,7 +9,7 @@ import com.senna.repository.local.converter.Converters
 import com.senna.repository.local.dao.CompositionDao
 import com.senna.repository.local.dao.UserDao
 
-@Database(entities = [User::class, Composition::class], version = 2, exportSchema = false)
+@Database(entities = [User::class, Composition::class], version = 3, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class DataBase : RoomDatabase() {
 

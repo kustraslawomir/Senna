@@ -9,13 +9,19 @@ class StorePublicCompositionsUseCase @Inject constructor(private val dataBase: D
 
     fun storeCompositions(firebaseComposition: PublicCompositions, startSplashScreenDelay: () -> Unit) {
         val compositions = firebaseComposition.compositions
-        compositions?.forEach { composition ->
-            dataBase.compositionDao().insertComposition(Composition().apply {
-                id = composition.id
-                name = composition.name
-                premium = composition.premium
-                sounds = composition.sounds
-            })
+        if (!compositions.isNullOrEmpty()) {
+
+            dataBase.compositionDao().removePublicCompositions()
+
+            compositions.forEach { composition ->
+                dataBase.compositionDao().insertComposition(Composition().apply {
+                    premium = composition.premium
+                    sounds = composition.sounds
+                    name = composition.name
+                    id = composition.id
+                    isPublic = true
+                })
+            }
         }
         startSplashScreenDelay()
     }
