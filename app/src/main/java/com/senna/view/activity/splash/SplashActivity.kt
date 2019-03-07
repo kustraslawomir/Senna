@@ -7,7 +7,7 @@ import com.senna.utils.extensions.isTrue
 import com.senna.utils.extensions.listen
 import com.senna.utils.extensions.replaceActivity
 import com.senna.view.activity.BaseActivity
-import com.senna.view.activity.main.NavigationActivity
+import com.senna.view.activity.nagivation.NavigationActivity
 
 class SplashActivity : BaseActivity() {
 

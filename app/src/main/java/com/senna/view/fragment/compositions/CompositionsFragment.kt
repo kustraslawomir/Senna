@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import kotlinx.android.synthetic.main.fragment_compositions.*
 import com.senna.com.R
 import com.senna.utils.extensions.listen
 import com.senna.utils.extensions.setPaddingFromNavBar
 import com.senna.utils.extensions.startEnterAnimation
-import com.senna.view.activity.main.NavigationActivity
+import com.senna.view.activity.nagivation.NavigationActivity
 import com.senna.view.fragment.compositions.adapter.CompositionsAdapter
+import kotlinx.android.synthetic.main.fragment_compositions.*
 
 
 class CompositionsFragment : Fragment() {
