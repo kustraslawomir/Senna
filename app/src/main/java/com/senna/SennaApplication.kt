@@ -5,11 +5,11 @@ import com.facebook.stetho.Stetho
 import com.senna.di.component.AppComponent
 import com.senna.di.component.DaggerAppComponent
 import com.senna.di.module.AppModule
-import com.senna.di.module.ContextModule
+import com.senna.di.module.PlayerModule
 import com.senna.di.module.RoomModule
 import timber.log.Timber
 
-class Application : Application() {
+class SennaApplication : Application() {
 
     companion object {
         lateinit var component: AppComponent
@@ -24,7 +24,7 @@ class Application : Application() {
 
     private fun initializeDagger() {
         component = DaggerAppComponent.builder()
-                .contextModule(ContextModule(applicationContext))
+                .playerModule(PlayerModule( applicationContext))
                 .appModule(AppModule(this))
                 .roomModule(RoomModule(this)).build()
     }

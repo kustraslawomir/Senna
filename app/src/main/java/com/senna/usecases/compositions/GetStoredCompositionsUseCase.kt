@@ -6,8 +6,11 @@ import javax.inject.Inject
 
 class GetStoredCompositionsUseCase @Inject constructor(private val dataBase: DataBase) {
 
-    fun getCompositions(setCompositions : (List<Composition>) -> Unit){
+    fun getCompositions(setCompositions: (List<Composition>) -> Unit) {
         val compositions = dataBase.compositionDao().compositions
-        setCompositions(compositions)
+        if (compositions != null)
+            setCompositions(compositions)
     }
+
+    fun getCompositionsSize() = dataBase.compositionDao().compositions?.size ?: 0
 }

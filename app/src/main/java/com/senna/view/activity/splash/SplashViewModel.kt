@@ -4,11 +4,12 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.senna.Application
+import com.senna.SennaApplication
 import com.senna.model.firebase.PublicCompositions
 import com.senna.usecases.compositions.FetchPublicCompositionsUseCase
-import com.senna.usecases.delays.SplashDelayUseCase
+import com.senna.usecases.compositions.GetStoredCompositionsUseCase
 import com.senna.usecases.compositions.StorePublicCompositionsUseCase
+import com.senna.usecases.delays.SplashDelayUseCase
 import com.senna.utils.livedata.Event
 import javax.inject.Inject
 
@@ -20,12 +21,17 @@ class SplashViewModel : ViewModel(), LifecycleObserver {
     lateinit var storePublicCompositionsUseCase: StorePublicCompositionsUseCase
     @Inject
     lateinit var navigateToMainScreenAfterDelayUseCase: SplashDelayUseCase
+    @Inject
+    lateinit var getStoredCompositionsUseCase: GetStoredCompositionsUseCase
 
     private val navigateToMainScreenEvent = MutableLiveData<Event<Boolean>>()
 
     init {
-        Application.component.inject(viewModel = this)
-        fetchPublicCompositions()
+        SennaApplication.component.inject(viewModel = this)
+
+        if (compositionsAreEmpty())
+            fetchPublicCompositions()
+        else startSplashDelay()
     }
 
     private fun fetchPublicCompositions() {
@@ -33,10 +39,10 @@ class SplashViewModel : ViewModel(), LifecycleObserver {
     }
 
     private fun onFetchPublicCompositionsEnd(publicCompositions: PublicCompositions) {
-        storePublicCompositionsUseCase.storeCompositions(publicCompositions, ::onCompositionsStored)
+        storePublicCompositionsUseCase.storeCompositions(publicCompositions, ::startSplashDelay)
     }
 
-    private fun onCompositionsStored() {
+    private fun startSplashDelay() {
         navigateToMainScreenAfterDelayUseCase.startSplashScreenDelay(::onSplashScreenDelayEnded)
     }
 
@@ -45,4 +51,6 @@ class SplashViewModel : ViewModel(), LifecycleObserver {
     }
 
     fun getNavigateToMainScreenEvent(): LiveData<Event<Boolean>> = navigateToMainScreenEvent
+
+    private fun compositionsAreEmpty() = getStoredCompositionsUseCase.getCompositionsSize() == 0
 }

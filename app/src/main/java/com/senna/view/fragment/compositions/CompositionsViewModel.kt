@@ -4,7 +4,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.senna.Application
+import com.senna.SennaApplication
 import com.senna.model.databse.Composition
 import com.senna.usecases.compositions.GetStoredCompositionsUseCase
 import javax.inject.Inject
@@ -17,7 +17,7 @@ class CompositionsViewModel : ViewModel(), LifecycleObserver {
     private val compositionsLiveData = MutableLiveData<List<Composition>>()
 
     init {
-        Application.component.inject(viewModel = this)
+        SennaApplication.component.inject(viewModel = this)
         getStoredCompositionsUseCase.getCompositions(::setComposition)
     }
 

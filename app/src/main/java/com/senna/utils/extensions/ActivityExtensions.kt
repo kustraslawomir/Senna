@@ -12,5 +12,8 @@ fun Activity.makeActivityFullScreen() {
 
 fun AppCompatActivity.replaceFragment(fragment : Fragment, id : Int) {
     FragmentTransactions.replaceFragment(supportFragmentManager,fragment, id)
+}
 
+fun AppCompatActivity.addFragment(fragment : Fragment, id : Int) {
+    FragmentTransactions.replaceFragment(supportFragmentManager,fragment, id)
 }

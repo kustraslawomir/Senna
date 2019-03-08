@@ -6,13 +6,11 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 import com.senna.com.R
 import com.senna.model.databse.Composition
 import com.senna.utils.extensions.shouldBeHideIf
-import timber.log.Timber
 
-class CompositionsAdapter : RecyclerView.Adapter<CompositionsAdapter.ViewHolder>() {
+class CompositionsAdapter(val chooseComposition  : (Composition) -> Unit) : RecyclerView.Adapter<CompositionsAdapter.ViewHolder>() {
 
     private var compositions: List<Composition> = arrayListOf()
 
@@ -25,10 +23,11 @@ class CompositionsAdapter : RecyclerView.Adapter<CompositionsAdapter.ViewHolder>
 
     override fun onBindViewHolder(holder: CompositionsAdapter.ViewHolder, position: Int) {
         val composition = compositions[position]
-        Timber.d("set composition: %s", Gson().toJson(composition))
-
-        holder.name.text = composition.name
         holder.divider.shouldBeHideIf(condition = thisIsLastElement(position))
+        holder.name.text = composition.name
+        holder.container.setOnClickListener {
+            chooseComposition(composition)
+        }
     }
 
     private fun thisIsLastElement(position: Int) = position == compositions.size-1
