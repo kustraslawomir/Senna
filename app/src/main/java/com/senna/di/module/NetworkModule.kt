@@ -1,25 +1,23 @@
 package com.senna.di.module
 
+
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-
-import java.util.concurrent.TimeUnit
-
-
+import com.senna.di.scopes.AppScope
+import com.senna.repository.remote.RemoteRepository
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import com.senna.di.scopes.AppScope
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
-import com.senna.repository.remote.RemoteRepository
+import java.util.concurrent.TimeUnit
 
-@Module(includes = [ContextModule::class])
+@Module
 class NetworkModule {
 
     private val baseUrl = "https://someurl/api/"

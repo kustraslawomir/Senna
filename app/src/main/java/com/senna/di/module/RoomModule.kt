@@ -1,14 +1,14 @@
 package com.senna.di.module
 
 import androidx.room.Room
-import dagger.Module
-import dagger.Provides
-import com.senna.Application
+import com.senna.SennaApplication
 import com.senna.di.scopes.AppScope
 import com.senna.repository.local.DataBase
+import dagger.Module
+import dagger.Provides
 
 @Module
-class RoomModule(application: Application) {
+class RoomModule(application: SennaApplication) {
 
     private val localSource: DataBase =
             Room.databaseBuilder<DataBase>(application, DataBase::class.java, "db")
