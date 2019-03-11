@@ -1,11 +1,9 @@
 package com.senna.view.fragment.compositions
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.senna.com.R
 import com.senna.model.databse.Composition
@@ -13,14 +11,12 @@ import com.senna.utils.Constants.Companion.COMPOSITION
 import com.senna.utils.extensions.listen
 import com.senna.utils.extensions.setPaddingFromNavBar
 import com.senna.utils.extensions.startEnterAnimation
-import com.senna.view.activity.nagivation.NavigationActivity
+import com.senna.view.fragment.BaseFragment
 import com.senna.view.fragment.compositions.adapter.CompositionsAdapter
 import com.senna.view.fragment.player.PlayerFragment
 import kotlinx.android.synthetic.main.fragment_compositions.*
 
-class CompositionsFragment : Fragment() {
-
-    lateinit var activity: NavigationActivity
+class CompositionsFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
             : View = inflater.inflate(R.layout.fragment_compositions, container, false)
@@ -39,11 +35,6 @@ class CompositionsFragment : Fragment() {
         }
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        activity = context as NavigationActivity
-    }
-
     private fun chooseComposition(composition: Composition) {
         val bundle = Bundle().apply {
             putParcelable(COMPOSITION, composition)
@@ -51,6 +42,7 @@ class CompositionsFragment : Fragment() {
         val fragment = PlayerFragment().apply {
             arguments = bundle
         }
-        activity.navigateTo(fragment)
+
+        getNaviagtionActivity().navigateTo(fragment)
     }
 }
