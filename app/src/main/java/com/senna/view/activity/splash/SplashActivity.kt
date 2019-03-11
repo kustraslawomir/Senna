@@ -25,9 +25,7 @@ class SplashActivity : BaseActivity() {
             hideProgressBar()
             when (fetchingStatus) {
                 is GetCompositionsNetworkState.Loading -> showProgressBar()
-                is GetCompositionsNetworkState.Error -> {
-                    showError(fetchingStatus.errorMessage)
-                }
+                is GetCompositionsNetworkState.Error -> showError(fetchingStatus.errorMessage)
             }
         }
     }
