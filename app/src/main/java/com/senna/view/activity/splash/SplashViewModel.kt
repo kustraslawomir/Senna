@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.senna.SennaApplication
-import com.senna.model.firebase.PublicCompositions
+import com.senna.model.fetchstates.GetCompositionsNetworkState
 import com.senna.usecases.compositions.FetchPublicCompositionsUseCase
 import com.senna.usecases.compositions.GetStoredCompositionsUseCase
 import com.senna.usecases.compositions.StorePublicCompositionsUseCase
@@ -26,6 +26,8 @@ class SplashViewModel : ViewModel(), LifecycleObserver {
 
     private val navigateToMainScreenEvent = MutableLiveData<Event<Boolean>>()
 
+    private val fetchingStatus = MutableLiveData<GetCompositionsNetworkState>()
+
     init {
         SennaApplication.component.inject(viewModel = this)
 
@@ -35,11 +37,14 @@ class SplashViewModel : ViewModel(), LifecycleObserver {
     }
 
     private fun fetchPublicCompositions() {
-        fetchDefaultCompositionsUseCase.fetchPublicCompositions(::onFetchPublicCompositionsEnd)
+        fetchDefaultCompositionsUseCase.fetchPublicCompositions(::onFetchingStatusChange)
     }
 
-    private fun onFetchPublicCompositionsEnd(publicCompositions: PublicCompositions) {
-        storePublicCompositionsUseCase.storeCompositions(publicCompositions, ::startSplashDelay)
+    private fun onFetchingStatusChange(result: GetCompositionsNetworkState) {
+        when (result) {
+            is GetCompositionsNetworkState.Response -> storePublicCompositionsUseCase.storeCompositions(result.publicCompositions, ::startSplashDelay)
+            is GetCompositionsNetworkState.Error, GetCompositionsNetworkState.Loading -> fetchingStatus.value = result
+        }
     }
 
     private fun startSplashDelay() {
@@ -51,6 +56,8 @@ class SplashViewModel : ViewModel(), LifecycleObserver {
     }
 
     fun getNavigateToMainScreenEvent(): LiveData<Event<Boolean>> = navigateToMainScreenEvent
+
+    fun getFetchingStatus(): LiveData<GetCompositionsNetworkState> = fetchingStatus
 
     private fun compositionsAreEmpty() = getStoredCompositionsUseCase.getCompositionsSize() == 0
 }
