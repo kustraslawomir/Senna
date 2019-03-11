@@ -119,6 +119,8 @@ dependencies {
     implementation "com.google.firebase:firebase-core:$project.firebaseCore"
     implementation "com.google.firebase:firebase-database:$project.firebase"
     implementation "com.google.firebase:firebase-auth:$project.firebase"
+
+    implementation "com.airbnb.android:lottie:2.5.4"
 }
 
 apply plugin: 'com.google.gms.google-services'
