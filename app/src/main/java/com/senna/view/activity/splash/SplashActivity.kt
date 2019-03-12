@@ -38,11 +38,11 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun showProgressBar() {
-        lottieLoading.showAnimation()
+        lottieLoading.show()
     }
 
     private fun hideProgressBar() {
-        lottieLoading.hideAnimation()
+        lottieLoading.hide()
     }
 
     private fun showError(errorMessage: String) {

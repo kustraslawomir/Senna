@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.senna.com.R
 import com.senna.model.databse.Composition
 import com.senna.utils.Constants.Companion.COMPOSITION
-import com.senna.utils.extensions.setLifeCycleObserver
 import kotlinx.android.synthetic.main.fragment_player.*
 import slawomir.kustra.starrysky.PlayerStateCallBack
 
@@ -23,7 +22,7 @@ class PlayerFragment : Fragment(), PlayerStateCallBack {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(PlayerViewModel::class.java)
-        setLifeCycleObserver(viewModel)
+
         playerUi.setCallback(this)
 
         val bundle = arguments

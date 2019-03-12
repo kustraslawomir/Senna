@@ -1,6 +1,5 @@
 package com.senna.view.fragment.player
 
-import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +8,7 @@ import com.senna.model.PlayerState
 import com.senna.usecases.player.SetPlayerSoundSourceUseCase
 import javax.inject.Inject
 
-class PlayerViewModel : ViewModel(), LifecycleObserver {
+class PlayerViewModel : ViewModel() {
 
     @Inject
     lateinit var playerSourceSoundsUseCase: SetPlayerSoundSourceUseCase
