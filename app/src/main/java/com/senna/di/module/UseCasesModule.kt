@@ -5,6 +5,7 @@ import com.senna.di.scopes.AppScope
 import com.senna.player.Player
 import com.senna.usecases.compositions.FetchPublicCompositionsUseCase
 import com.senna.usecases.delays.SplashDelayUseCase
+import com.senna.usecases.player.PlayerControlUseCase
 import com.senna.usecases.player.SetPlayerSoundSourceUseCase
 import dagger.Module
 import dagger.Provides
@@ -28,5 +29,11 @@ class UseCasesModule {
     @AppScope
     fun getPlayerSourceSoundsUseCase(player : Player): SetPlayerSoundSourceUseCase {
         return SetPlayerSoundSourceUseCase(player)
+    }
+
+    @Provides
+    @AppScope
+    fun getPlayerControlUseCase(player : Player): PlayerControlUseCase {
+        return PlayerControlUseCase(player)
     }
 }

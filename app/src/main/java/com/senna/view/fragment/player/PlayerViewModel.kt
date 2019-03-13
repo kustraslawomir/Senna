@@ -1,10 +1,8 @@
 package com.senna.view.fragment.player
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.senna.SennaApplication
-import com.senna.model.PlayerState
+import com.senna.usecases.player.PlayerControlUseCase
 import com.senna.usecases.player.SetPlayerSoundSourceUseCase
 import javax.inject.Inject
 
@@ -12,8 +10,8 @@ class PlayerViewModel : ViewModel() {
 
     @Inject
     lateinit var playerSourceSoundsUseCase: SetPlayerSoundSourceUseCase
-
-    private val playerState: MutableLiveData<PlayerState> = MutableLiveData()
+    @Inject
+    lateinit var playerControlUseCase: PlayerControlUseCase
 
     init {
         SennaApplication.component.inject(this)
@@ -23,13 +21,11 @@ class PlayerViewModel : ViewModel() {
         playerSourceSoundsUseCase.setPlayerSource(sounds)
     }
 
-    fun getPlayerState() : LiveData<PlayerState> = playerState
-
     fun play() {
-        playerState.value = PlayerState.Playing
+        playerControlUseCase.resume()
     }
 
     fun pause() {
-        playerState.value = PlayerState.Paused
+        playerControlUseCase.pause()
     }
 }

@@ -31,14 +31,13 @@ class SplashViewModel : ViewModel(), LifecycleObserver {
     init {
         SennaApplication.component.inject(viewModel = this)
 
-        if (compositionsAreEmpty())
+        fetchPublicCompositions()
+       /* if (compositionsAreEmpty())
             fetchPublicCompositions()
-        else startSplashDelay()
+        else startSplashDelay()*/
     }
 
-    private fun fetchPublicCompositions() {
-        fetchDefaultCompositionsUseCase.fetchPublicCompositions(::onFetchingStatusChange)
-    }
+    private fun fetchPublicCompositions() = fetchDefaultCompositionsUseCase.fetchPublicCompositions(::onFetchingStatusChange)
 
     private fun onFetchingStatusChange(result: GetCompositionsNetworkState) {
         when (result) {
@@ -47,9 +46,7 @@ class SplashViewModel : ViewModel(), LifecycleObserver {
         }
     }
 
-    private fun startSplashDelay() {
-        navigateToMainScreenAfterDelayUseCase.startSplashScreenDelay(::onSplashScreenDelayEnded)
-    }
+    private fun startSplashDelay() = navigateToMainScreenAfterDelayUseCase.startSplashScreenDelay(::onSplashScreenDelayEnded)
 
     private fun onSplashScreenDelayEnded() {
         navigateToMainScreenEvent.value = Event(value = true)

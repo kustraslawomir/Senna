@@ -34,7 +34,9 @@ class PerfectLoopMediaPlayer internal constructor(context: Context, resId: Int) 
             val afd = context.resources.openRawResourceFd(mResId)
             mCurrentPlayer = MediaPlayer()
             mCurrentPlayer?.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
-            mCurrentPlayer?.setOnPreparedListener { mCurrentPlayer?.start() }
+            mCurrentPlayer?.setOnPreparedListener {
+                //   mCurrentPlayer?.start()
+            }
             mCurrentPlayer?.prepareAsync()
             createNextMediaPlayerRaw()
         } catch (e: IOException) {
@@ -98,7 +100,6 @@ class PerfectLoopMediaPlayer internal constructor(context: Context, resId: Int) 
         } else {
             Timber.d(TAG, "pause() | mCurrentPlayer is NULL or not playing")
         }
-
     }
 
     fun setWakeMode(c: Context, mode: Int) {

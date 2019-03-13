@@ -17,6 +17,7 @@
         android:layout_width="@dimen/loading_size"
         android:layout_height="@dimen/loading_size"
         android:layout_gravity="center"
+        android:visibility="gone"
         app:lottie_autoPlay="true"
         app:lottie_fileName="loading.json"
         app:lottie_loop="true" />

@@ -27,4 +27,16 @@ class Player @Inject constructor(val context: Context) {
         }
         players.clear()
     }
+
+    fun pause() {
+        players.forEach { player ->
+            player.pause()
+        }
+    }
+
+    fun resume() {
+        players.forEach { player ->
+            player.start()
+        }
+    }
 }
