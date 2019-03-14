@@ -1,9 +1,7 @@
 package com.senna.view.fragment.compositions
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import com.senna.com.R
 import com.senna.model.databse.Composition
@@ -18,8 +16,7 @@ import kotlinx.android.synthetic.main.fragment_compositions.*
 
 class CompositionsFragment : BaseFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
-            : View = inflater.inflate(R.layout.fragment_compositions, container, false)
+    override fun getLayoutId() = R.layout.fragment_compositions
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,6 +40,6 @@ class CompositionsFragment : BaseFragment() {
             arguments = bundle
         }
 
-        getNaviagtionActivity().navigateTo(fragment)
+        getNavigationActivity().navigateTo(fragment)
     }
 }
