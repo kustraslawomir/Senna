@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import com.senna.com.R
 import com.senna.view.activity.nagivation.NavigationActivity
 
@@ -17,4 +18,5 @@ abstract class BaseFragment : Fragment() {
 
     protected abstract fun getLayoutId() : Int
 
+    protected abstract fun getViewModel() : ViewModel
 }

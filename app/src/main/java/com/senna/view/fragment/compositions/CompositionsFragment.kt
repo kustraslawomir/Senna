@@ -18,6 +18,8 @@ class CompositionsFragment : BaseFragment() {
 
     override fun getLayoutId() = R.layout.fragment_compositions
 
+    override fun getViewModel() = ViewModelProviders.of(this).get(CompositionsViewModel::class.java)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         container.setPaddingFromNavBar(resources)
@@ -25,7 +27,7 @@ class CompositionsFragment : BaseFragment() {
         val adapter = CompositionsAdapter(::chooseComposition)
         compositionsRecyclerView.adapter = adapter
 
-        val viewModel = ViewModelProviders.of(this).get(CompositionsViewModel::class.java)
+        val viewModel = getViewModel()
         viewModel.getCompositionsLiveData().listen(this) { compositions ->
             adapter.setCompositions(compositions = compositions)
             compositionsRecyclerView.startEnterAnimation()

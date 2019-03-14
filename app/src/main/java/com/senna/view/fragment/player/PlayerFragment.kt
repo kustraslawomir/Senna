@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.senna.com.R
 import com.senna.model.databse.Composition
@@ -15,14 +16,15 @@ import slawomir.kustra.starrysky.PlayerStateCallBack
 
 class PlayerFragment : BaseFragment(), PlayerStateCallBack {
 
+    override fun getViewModel() = ViewModelProviders.of(this).get(PlayerViewModel::class.java)
+
     private lateinit var viewModel: PlayerViewModel
 
     override fun getLayoutId() = R.layout.fragment_player
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(PlayerViewModel::class.java)
-
+        viewModel = getViewModel()
         playerUi.setCallback(this)
 
         val bundle = arguments

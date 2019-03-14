@@ -3,6 +3,7 @@ package com.senna.view.activity
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
 import com.senna.utils.extensions.makeActivityFullScreen
 import kotlinx.android.synthetic.main.fragment_compositions.view.*
 
@@ -17,5 +18,5 @@ abstract class BaseActivity : AppCompatActivity() {
 
     abstract fun getContentView() : Int
 
-
+    abstract fun getViewModel() : ViewModel
 }
