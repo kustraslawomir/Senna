@@ -9,15 +9,15 @@ import androidx.lifecycle.ViewModelProviders
 import com.senna.com.R
 import com.senna.model.databse.Composition
 import com.senna.utils.Constants.Companion.COMPOSITION
+import com.senna.view.fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_player.*
 import slawomir.kustra.starrysky.PlayerStateCallBack
 
-class PlayerFragment : Fragment(), PlayerStateCallBack {
+class PlayerFragment : BaseFragment(), PlayerStateCallBack {
 
     private lateinit var viewModel: PlayerViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
-            : View = inflater.inflate(R.layout.fragment_player, container, false)
+    override fun getLayoutId() = R.layout.fragment_player
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

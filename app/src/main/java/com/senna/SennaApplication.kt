@@ -24,7 +24,7 @@ class SennaApplication : Application() {
 
     private fun initializeDagger() {
         component = DaggerAppComponent.builder()
-                .playerModule(PlayerModule( applicationContext))
+                .playerModule(PlayerModule(applicationContext))
                 .appModule(AppModule(this))
                 .roomModule(RoomModule(this)).build()
     }

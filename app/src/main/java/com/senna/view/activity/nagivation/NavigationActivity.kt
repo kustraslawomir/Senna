@@ -10,9 +10,10 @@ import com.senna.view.fragment.player.PlayerFragment
 
 class NavigationActivity : BaseActivity() {
 
+    override fun getContentView() = R.layout.activity_main
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         replaceFragment(CompositionsFragment(), R.id.content)
     }
 

@@ -11,9 +11,10 @@ import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : BaseActivity() {
 
+    override fun getContentView() = R.layout.activity_splash
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
 
         val viewModel = ViewModelProviders.of(this).get(SplashViewModel::class.java)
         observeNavigationEvent(viewModel)
