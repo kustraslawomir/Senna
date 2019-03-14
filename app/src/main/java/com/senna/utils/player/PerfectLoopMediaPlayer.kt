@@ -7,55 +7,49 @@ import timber.log.Timber
 
 import java.io.IOException
 
-class PerfectLoopMediaPlayer internal constructor(context: Context, resId: Int) {
+class PerfectLoopMediaPlayer internal constructor(val context: Context, private val resId: Int) {
 
-    private var mContext: Context? = context
-    private var mResId = resId
-
-    private var mCurrentPlayer: MediaPlayer? = null
-    private var mNextPlayer: MediaPlayer? = null
+    private var currentPlayer: MediaPlayer? = null
+    private var nextPlayer: MediaPlayer? = null
 
     private val onCompletionListener = MediaPlayer.OnCompletionListener { mediaPlayer ->
-        mCurrentPlayer = mNextPlayer
+        currentPlayer = nextPlayer
         createNextMediaPlayerRaw()
         mediaPlayer.release()
     }
 
-    val isPlaying: Boolean
-        @Throws(IllegalStateException::class)
-        get() = if (mCurrentPlayer != null) {
-            mCurrentPlayer?.isPlaying.isTrue()
-        } else {
-            false
-        }
-
     init {
         try {
-            val afd = context.resources.openRawResourceFd(mResId)
-            mCurrentPlayer = MediaPlayer()
-            mCurrentPlayer?.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
-            mCurrentPlayer?.setOnPreparedListener {
-                //   mCurrentPlayer?.start()
-            }
-            mCurrentPlayer?.prepareAsync()
+            val afd = context.resources.openRawResourceFd(this.resId)
+            currentPlayer = MediaPlayer()
+            currentPlayer?.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+            currentPlayer?.prepareAsync()
             createNextMediaPlayerRaw()
         } catch (e: IOException) {
             e.printStackTrace()
         }
     }
 
+    val isPlaying: Boolean
+        @Throws(IllegalStateException::class)
+        get() = if (currentPlayer != null) {
+            currentPlayer?.isPlaying.isTrue()
+        } else {
+            false
+        }
+
     private fun createNextMediaPlayerRaw() {
-        val afd = mContext?.resources?.openRawResourceFd(mResId)
-        mNextPlayer = MediaPlayer()
+        val afd = context?.resources?.openRawResourceFd(resId)
+        nextPlayer = MediaPlayer()
         try {
             if (afd != null) {
-                mNextPlayer?.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
-                mNextPlayer?.setOnPreparedListener {
-                    mNextPlayer?.seekTo(0)
-                    mCurrentPlayer?.setNextMediaPlayer(mNextPlayer)
-                    mCurrentPlayer?.setOnCompletionListener(onCompletionListener)
+                nextPlayer?.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+                nextPlayer?.setOnPreparedListener {
+                    nextPlayer?.seekTo(0)
+                    currentPlayer?.setNextMediaPlayer(nextPlayer)
+                    currentPlayer?.setOnCompletionListener(onCompletionListener)
                 }
-                mNextPlayer?.prepareAsync()
+                nextPlayer?.prepareAsync()
             }
         } catch (e: IOException) {
             e.printStackTrace()
@@ -63,83 +57,80 @@ class PerfectLoopMediaPlayer internal constructor(context: Context, resId: Int) 
     }
 
     fun setVolume(leftVolume: Float, rightVolume: Float) {
-        if (mCurrentPlayer != null) {
-            mCurrentPlayer?.setVolume(leftVolume, rightVolume)
+        if (currentPlayer != null) {
+            currentPlayer?.setVolume(leftVolume, rightVolume)
         } else {
-            Timber.d(TAG, "setVolume()")
+            Timber.d("setVolume()")
         }
     }
 
     @Throws(IllegalStateException::class)
     fun start() {
-        if (mCurrentPlayer != null) {
-            Timber.d(TAG, "start()")
-            mCurrentPlayer?.start()
+        if (currentPlayer != null) {
+            Timber.d("start()")
+            currentPlayer?.start()
         } else {
-            Timber.d(TAG, "start() | mCurrentPlayer is NULL")
+            Timber.d("start() | currentPlayer is NULL")
         }
 
     }
 
     @Throws(IllegalStateException::class)
     fun stop() {
-        if (mCurrentPlayer != null && mCurrentPlayer?.isPlaying.isTrue()) {
-            Timber.d(TAG, "stop()")
-            mCurrentPlayer?.stop()
+        if (currentPlayer != null && currentPlayer?.isPlaying.isTrue()) {
+            Timber.d("stop()")
+            currentPlayer?.stop()
         } else {
-            Timber.d(TAG, "stop() | mCurrentPlayer is NULL or not playing")
+            Timber.d("stop() | currentPlayer is NULL or not playing")
         }
 
     }
 
     @Throws(IllegalStateException::class)
     fun pause() {
-        if (mCurrentPlayer != null && mCurrentPlayer?.isPlaying.isTrue()) {
-            Timber.d(TAG, "pause()")
-            mCurrentPlayer?.pause()
+        if (currentPlayer != null && currentPlayer?.isPlaying.isTrue()) {
+            Timber.d("pause()")
+            currentPlayer?.pause()
         } else {
-            Timber.d(TAG, "pause() | mCurrentPlayer is NULL or not playing")
+            Timber.d("pause() | currentPlayer is NULL or not playing")
         }
     }
 
     fun setWakeMode(c: Context, mode: Int) {
-        if (mCurrentPlayer != null) {
-            mCurrentPlayer?.setWakeMode(c, mode)
-            Timber.d(TAG, "setWakeMode() | ")
+        if (currentPlayer != null) {
+            currentPlayer?.setWakeMode(c, mode)
+            Timber.d("setWakeMode() | ")
         } else {
-            Timber.d(TAG, "setWakeMode() | mCurrentPlayer is NULL")
+            Timber.d("setWakeMode() | currentPlayer is NULL")
         }
     }
 
     fun setAudioStreamType(audioStreamType: Int) {
-        if (mCurrentPlayer != null) {
-            mCurrentPlayer?.setAudioStreamType(audioStreamType)
+        if (currentPlayer != null) {
+            currentPlayer?.setAudioStreamType(audioStreamType)
         } else {
-            Timber.d(TAG, "setAudioStreamType() | mCurrentPlayer is NULL")
+            Timber.d("setAudioStreamType() | currentPlayer is NULL")
         }
     }
 
     fun release() {
-        Timber.d(TAG, "release()")
-        if (mCurrentPlayer != null)
-            mCurrentPlayer?.release()
-        if (mNextPlayer != null)
-            mNextPlayer?.release()
+        Timber.d("release()")
+        if (currentPlayer != null)
+            currentPlayer?.release()
+        if (nextPlayer != null)
+            nextPlayer?.release()
     }
 
     fun reset() {
-        if (mCurrentPlayer != null) {
-            Timber.d(TAG, "reset()")
-            mCurrentPlayer?.reset()
+        if (currentPlayer != null) {
+            Timber.d("reset()")
+            currentPlayer?.reset()
         } else {
-            Timber.d(TAG, "reset() | mCurrentPlayer is NULL")
+            Timber.d("reset() | currentPlayer is NULL")
         }
     }
 
     companion object {
-
-        private val TAG = PerfectLoopMediaPlayer::class.java.name
-
         fun create(context: Context, resId: Int): PerfectLoopMediaPlayer {
             return PerfectLoopMediaPlayer(context, resId)
         }
