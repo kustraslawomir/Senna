@@ -10,7 +10,7 @@ import com.senna.com.R
 import com.senna.model.databse.Composition
 import com.senna.utils.extensions.shouldBeHideIf
 
-class CompositionsAdapter(val chooseComposition  : (Composition) -> Unit) : RecyclerView.Adapter<CompositionsAdapter.ViewHolder>() {
+class CompositionsAdapter(val chooseComposition: (Composition) -> Unit) : RecyclerView.Adapter<CompositionsAdapter.ViewHolder>() {
 
     private var compositions: List<Composition> = arrayListOf()
 
@@ -30,7 +30,7 @@ class CompositionsAdapter(val chooseComposition  : (Composition) -> Unit) : Recy
         }
     }
 
-    private fun thisIsLastElement(position: Int) = position == compositions.size-1
+    private fun thisIsLastElement(position: Int) = position == compositions.size - 1
 
     fun setCompositions(compositions: List<Composition>) {
         this.compositions = compositions
