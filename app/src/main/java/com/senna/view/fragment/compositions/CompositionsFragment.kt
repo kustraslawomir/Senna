@@ -42,6 +42,6 @@ class CompositionsFragment : BaseFragment() {
             arguments = bundle
         }
 
-        getNavigationActivity().navigateTo(fragment)
+        getNavigationActivity().replaceFragment(fragment)
     }
 }

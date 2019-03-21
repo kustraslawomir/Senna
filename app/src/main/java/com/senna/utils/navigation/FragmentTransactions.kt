@@ -16,6 +16,18 @@ class FragmentTransactions {
             fragmentManager.beginTransaction()
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .replace(container, fragment, fragment::class.java.simpleName)
+                    .addToBackStack(fragment::class.java.simpleName)
+                    .commit()
+        }
+
+        fun replaceFragmentWithoutBackStack(fragmentManager: FragmentManager, fragment: Fragment, container: Int) {
+            val fragmentToRemove = fragmentManager.findFragmentByTag(fragment::class.java.simpleName)
+            if (fragmentToRemove != null)
+                fragmentManager.beginTransaction().remove(fragmentToRemove).commit()
+
+            fragmentManager.beginTransaction()
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .replace(container, fragment, fragment::class.java.simpleName)
                     .commit()
         }
 

@@ -14,6 +14,10 @@ fun AppCompatActivity.replaceFragment(fragment : Fragment, id : Int) {
     FragmentTransactions.replaceFragment(supportFragmentManager,fragment, id)
 }
 
+fun AppCompatActivity.replaceFragmentWithoutBackStack(fragment : Fragment, id : Int) {
+    FragmentTransactions.replaceFragmentWithoutBackStack(supportFragmentManager,fragment, id)
+}
+
 fun AppCompatActivity.addFragment(fragment : Fragment, id : Int) {
     FragmentTransactions.addFragment(supportFragmentManager,fragment, id)
 }

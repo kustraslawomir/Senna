@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.senna.com.R
 import com.senna.utils.extensions.addFragment
 import com.senna.utils.extensions.replaceFragment
+import com.senna.utils.extensions.replaceFragmentWithoutBackStack
 import com.senna.view.activity.BaseActivity
 import com.senna.view.fragment.compositions.CompositionsFragment
 
@@ -17,10 +18,14 @@ class NavigationActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        replaceFragment(CompositionsFragment(), R.id.content)
+        replaceFragmentWithoutBackStack(CompositionsFragment(), R.id.content)
     }
 
-    fun navigateTo(fragment: Fragment) {
+    fun addFragment(fragment: Fragment) {
         addFragment(fragment, R.id.content)
+    }
+
+    fun replaceFragment(fragment: Fragment) {
+        replaceFragment(fragment, R.id.content)
     }
 }
