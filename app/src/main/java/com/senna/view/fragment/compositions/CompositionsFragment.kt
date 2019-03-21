@@ -42,6 +42,6 @@ class CompositionsFragment : BaseFragment() {
             arguments = bundle
         }
 
-        getNavigationActivity().replaceFragment(fragment)
+        getNavigationActivity().replaceFragment(withBackStack = true, fragment = fragment)
     }
 }

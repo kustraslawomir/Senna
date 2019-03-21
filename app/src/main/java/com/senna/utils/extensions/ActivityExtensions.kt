@@ -10,14 +10,13 @@ fun Activity.makeActivityFullScreen() {
     window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 }
 
-fun AppCompatActivity.replaceFragment(fragment : Fragment, id : Int) {
-    FragmentTransactions.replaceFragment(supportFragmentManager,fragment, id)
+fun AppCompatActivity.replaceFragment(withBackStack: Boolean, fragment: Fragment, view: Int) {
+    if (withBackStack)
+        FragmentTransactions.replaceFragment(supportFragmentManager, fragment, view)
+    else
+        FragmentTransactions.replaceFragmentWithoutBackStack(supportFragmentManager, fragment, view)
 }
 
-fun AppCompatActivity.replaceFragmentWithoutBackStack(fragment : Fragment, id : Int) {
-    FragmentTransactions.replaceFragmentWithoutBackStack(supportFragmentManager,fragment, id)
-}
-
-fun AppCompatActivity.addFragment(fragment : Fragment, id : Int) {
-    FragmentTransactions.addFragment(supportFragmentManager,fragment, id)
+fun AppCompatActivity.addFragment(fragment: Fragment, id: Int) {
+    FragmentTransactions.addFragment(supportFragmentManager, fragment, id)
 }
