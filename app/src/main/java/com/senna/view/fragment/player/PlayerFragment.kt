@@ -20,9 +20,12 @@ class PlayerFragment : BaseFragment(), PlayerStateCallBack {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = getViewModel()
         playerUi.setCallback(this)
+    }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = getViewModel()
         val bundle = arguments
         if (bundle != null) {
             val composition : Composition? = bundle.getParcelable(COMPOSITION)
