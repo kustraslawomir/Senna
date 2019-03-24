@@ -4,7 +4,7 @@ import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class Converters{
+class Converters {
     @TypeConverter
     fun fromString(value: String): List<String> {
         val listType = object : TypeToken<List<String>>() {
@@ -13,5 +13,5 @@ class Converters{
     }
 
     @TypeConverter
-    fun fromArrayLisr(list: List<String>)= Gson().toJson(list)
+    fun fromArrayList(list: List<String>) : String = Gson().toJson(list)
 }
