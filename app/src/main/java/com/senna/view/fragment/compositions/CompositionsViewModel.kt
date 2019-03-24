@@ -26,4 +26,5 @@ class CompositionsViewModel : ViewModel(), LifecycleObserver {
     }
 
     fun getCompositionsLiveData(): LiveData<List<Composition>> = compositionsLiveData
+
 }

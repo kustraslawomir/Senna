@@ -1,7 +1,6 @@
 package com.senna.view.activity.splash
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.senna.com.R
 import com.senna.model.fetchstates.GetCompositionsNetworkState
@@ -25,11 +24,11 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun observeNetworkState(viewModel: SplashViewModel) {
-        viewModel.getFetchingStatus().listen(this) { fetchingStatus ->
+        viewModel.getFetchingStatus().listen(this) { getCompositionsNetworkState ->
             hideProgressBar()
-            when (fetchingStatus) {
+            when (getCompositionsNetworkState) {
                 is GetCompositionsNetworkState.Loading -> showProgressBar()
-                is GetCompositionsNetworkState.Error -> showError(fetchingStatus.errorMessage)
+                is GetCompositionsNetworkState.Error -> showError(getCompositionsNetworkState.errorMessage)
             }
         }
     }

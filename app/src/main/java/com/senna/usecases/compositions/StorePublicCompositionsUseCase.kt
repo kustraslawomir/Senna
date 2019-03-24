@@ -10,10 +10,9 @@ class StorePublicCompositionsUseCase @Inject constructor(private val dataBase: D
 
     fun storeCompositions(firebaseComposition: PublicCompositions, startSplashScreenDelay: () -> Unit) {
         val compositions = firebaseComposition.compositions
+
         if (!compositions.isNullOrEmpty()) {
-
             clearCompositionsInDatabase()
-
             compositions.forEach { composition ->
                 storeComposition(composition)
             }

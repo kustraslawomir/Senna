@@ -14,7 +14,7 @@ class Player @Inject constructor(val context: Context) {
         clearPlayers()
 
         sounds.forEach { sound ->
-            Timber.d("Add media player to list for sound: %s", sound)
+            Timber.d("Add media player to apiCalls for sound: %s", sound)
             players.add(PerfectLoopMediaPlayer(context, findSoundId(sound.replace(".mp3", ""))))
         }
     }

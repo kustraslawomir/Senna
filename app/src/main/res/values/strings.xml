@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Senna</string>
+    <string name="welcome">Test Welcome Value</string>
+    <string name="splash">Splash</string>
+    <string name="hello">Hello</string>
     <string name="public_compositions_title">Listen to our suggestions\nor create your own mix</string>
 </resources>

@@ -17,7 +17,7 @@ class FetchPublicCompositionsUseCase @Inject constructor(private val fireBaseDat
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val publicCompositions = dataSnapshot.getValue(PublicCompositions::class.java)
                 if (publicCompositions != null)
-                    onFetchingStatusChange(GetCompositionsNetworkState.Response(publicCompositions))
+                    onFetchingStatusChange(GetCompositionsNetworkState.Success(publicCompositions))
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

@@ -31,17 +31,16 @@ class SplashViewModel : ViewModel(), LifecycleObserver {
     init {
         SennaApplication.component.inject(viewModel = this)
 
-        fetchPublicCompositions()
-       /* if (compositionsAreEmpty())
+       if (compositionsAreEmpty())
             fetchPublicCompositions()
-        else startSplashDelay()*/
+        else startSplashDelay()
     }
 
     private fun fetchPublicCompositions() = fetchDefaultCompositionsUseCase.fetchPublicCompositions(::onFetchingStatusChange)
 
     private fun onFetchingStatusChange(result: GetCompositionsNetworkState) {
         when (result) {
-            is GetCompositionsNetworkState.Response -> storePublicCompositionsUseCase.storeCompositions(result.publicCompositions, ::startSplashDelay)
+            is GetCompositionsNetworkState.Success -> storePublicCompositionsUseCase.storeCompositions(result.publicCompositions, ::startSplashDelay)
             is GetCompositionsNetworkState.Error, GetCompositionsNetworkState.Loading -> fetchingStatus.value = result
         }
     }
