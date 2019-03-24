@@ -6,7 +6,7 @@ import com.senna.com.R
 import com.senna.model.fetchstates.GetCompositionsNetworkState
 import com.senna.utils.extensions.*
 import com.senna.view.activity.BaseActivity
-import com.senna.view.activity.nagivation.NavigationActivity
+import com.senna.view.activity.navigation.NavigationActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : BaseActivity() {
