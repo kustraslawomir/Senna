@@ -2,6 +2,7 @@ package com.senna
 
 import android.app.Application
 import com.facebook.stetho.Stetho
+import com.senna.com.BuildConfig
 import com.senna.di.component.AppComponent
 import com.senna.di.component.DaggerAppComponent
 import com.senna.di.module.AppModule
@@ -18,8 +19,10 @@ class SennaApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         initializeDagger()
-        Stetho.initializeWithDefaults(this)
-        Timber.plant(Timber.DebugTree())
+        if(BuildConfig.DEBUG){
+            Stetho.initializeWithDefaults(this)
+            Timber.plant(Timber.DebugTree())
+        }
     }
 
     private fun initializeDagger() {

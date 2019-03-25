@@ -17,7 +17,7 @@ class UseCasesModule {
     fun getDefaultCompositionsUseCase(fireBaseDatabase: FirebaseDatabase): FetchPublicCompositionsUseCase {
         return FetchPublicCompositionsUseCase(fireBaseDatabase)
     }
-    
+
     @Provides
     @AppScope
     fun getPlayerSourceSoundsUseCase(player : Player): SetPlayerSoundSourceUseCase {
