@@ -22,10 +22,7 @@ class CompositionsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         container.setPaddingFromNavBar(resources)
-    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         val viewModel = getViewModel()
 
         val adapter = CompositionsAdapter(::chooseComposition)
