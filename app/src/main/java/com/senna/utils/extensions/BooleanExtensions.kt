@@ -1,5 +1,5 @@
 package com.senna.utils.extensions
 
-fun Boolean?.isTrue() : Boolean {
+fun Boolean?.isNotNullAndTrue() : Boolean {
     return this == true
 }

@@ -34,7 +34,7 @@ class SplashActivity : BaseActivity() {
 
     private fun observeNavigationEvent(viewModel: SplashViewModel) {
         viewModel.getShouldOpenNavigationScreen().listen(this) { navigateToMain ->
-            if (navigateToMain.shouldBeHandled().isTrue())
+            if (navigateToMain.shouldBeHandled().isNotNullAndTrue())
                 replaceActivity(NavigationActivity::class.java)
         }
     }

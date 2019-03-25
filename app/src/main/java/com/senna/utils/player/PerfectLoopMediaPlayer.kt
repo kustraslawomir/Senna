@@ -2,7 +2,7 @@ package com.senna.utils.player
 
 import android.content.Context
 import android.media.MediaPlayer
-import com.senna.utils.extensions.isTrue
+import com.senna.utils.extensions.isNotNullAndTrue
 import timber.log.Timber
 
 import java.io.IOException
@@ -33,7 +33,7 @@ class PerfectLoopMediaPlayer internal constructor(val context: Context, private 
     val isPlaying: Boolean
         @Throws(IllegalStateException::class)
         get() = if (currentPlayer != null) {
-            currentPlayer?.isPlaying.isTrue()
+            currentPlayer?.isPlaying.isNotNullAndTrue()
         } else {
             false
         }
@@ -77,7 +77,7 @@ class PerfectLoopMediaPlayer internal constructor(val context: Context, private 
 
     @Throws(IllegalStateException::class)
     fun stop() {
-        if (currentPlayer != null && currentPlayer?.isPlaying.isTrue()) {
+        if (currentPlayer != null && currentPlayer?.isPlaying.isNotNullAndTrue()) {
             Timber.d("stop()")
             currentPlayer?.stop()
         } else {
@@ -88,7 +88,7 @@ class PerfectLoopMediaPlayer internal constructor(val context: Context, private 
 
     @Throws(IllegalStateException::class)
     fun pause() {
-        if (currentPlayer != null && currentPlayer?.isPlaying.isTrue()) {
+        if (currentPlayer != null && currentPlayer?.isPlaying.isNotNullAndTrue()) {
             Timber.d("pause()")
             currentPlayer?.pause()
         } else {
