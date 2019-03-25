@@ -3,7 +3,6 @@ package com.senna.di.component
 import com.senna.di.module.*
 import com.senna.di.scopes.AppScope
 import com.senna.usecases.compositions.FetchPublicCompositionsUseCase
-import com.senna.usecases.delays.SplashDelayUseCase
 import com.senna.usecases.player.PlayerControlUseCase
 import com.senna.usecases.player.SetPlayerSoundSourceUseCase
 import com.senna.view.activity.splash.SplashViewModel
@@ -23,8 +22,6 @@ interface AppComponent {
     fun inject(viewModel: CompositionsViewModel)
 
     fun inject(viewModel: PlayerViewModel)
-
-    fun inject(useCase: SplashDelayUseCase)
 
     fun inject(useCase: FetchPublicCompositionsUseCase)
 

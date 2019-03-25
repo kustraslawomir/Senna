@@ -4,7 +4,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.senna.di.scopes.AppScope
 import com.senna.player.Player
 import com.senna.usecases.compositions.FetchPublicCompositionsUseCase
-import com.senna.usecases.delays.SplashDelayUseCase
 import com.senna.usecases.player.PlayerControlUseCase
 import com.senna.usecases.player.SetPlayerSoundSourceUseCase
 import dagger.Module
@@ -18,13 +17,7 @@ class UseCasesModule {
     fun getDefaultCompositionsUseCase(fireBaseDatabase: FirebaseDatabase): FetchPublicCompositionsUseCase {
         return FetchPublicCompositionsUseCase(fireBaseDatabase)
     }
-
-    @Provides
-    @AppScope
-    fun getNavigateToMainScreenAfterDelayUseCase(): SplashDelayUseCase {
-        return SplashDelayUseCase()
-    }
-
+    
     @Provides
     @AppScope
     fun getPlayerSourceSoundsUseCase(player : Player): SetPlayerSoundSourceUseCase {
