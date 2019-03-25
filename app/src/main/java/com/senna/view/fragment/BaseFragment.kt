@@ -8,7 +8,7 @@ import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import com.senna.view.activity.nagivation.NavigationActivity
+import com.senna.view.activity.navigation.NavigationActivity
 
 abstract class BaseFragment : Fragment() {
 

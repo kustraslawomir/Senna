@@ -22,7 +22,7 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name="com.senna.view.activity.nagivation.NavigationActivity"
+            android:name="com.senna.view.activity.navigation.NavigationActivity"
             android:windowSoftInputMode="adjustResize" />
 
         <activity android:name="com.senna.view.activity.splash.SplashActivity">

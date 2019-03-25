@@ -1,4 +1,4 @@
-package com.senna.view.activity.nagivation
+package com.senna.view.activity.navigation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

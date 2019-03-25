@@ -6,7 +6,7 @@ sealed class GetCompositionsNetworkState {
 
     object Loading : GetCompositionsNetworkState()
 
-    data class Error(val errorMessage : String) : GetCompositionsNetworkState()
+    class Error(val errorMessage: String) : GetCompositionsNetworkState()
 
-    data class Response(val publicCompositions : PublicCompositions) : GetCompositionsNetworkState()
+    class Success(val publicCompositions: PublicCompositions) : GetCompositionsNetworkState()
 }

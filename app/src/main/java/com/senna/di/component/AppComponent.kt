@@ -14,7 +14,7 @@ import dagger.android.AndroidInjectionModule
 @AppScope
 @Component(modules =
 [AndroidInjectionModule::class, BuilderModule::class, AppModule::class,
-    RoomModule::class, NetworkModule::class, FireBaseDatabaseModule::class, UseCasesModule::class, PlayerModule::class])
+    RoomModule::class, FireBaseDatabaseModule::class, UseCasesModule::class, PlayerModule::class])
 
 interface AppComponent {
 
