@@ -2,7 +2,6 @@ package com.senna.view.fragment.compositions
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProviders
 import com.senna.com.R
 import com.senna.model.databse.Composition
 import com.senna.utils.Constants.Companion.COMPOSITION
@@ -18,7 +17,7 @@ class CompositionsFragment : BaseFragment() {
 
     override fun getLayoutId() = R.layout.fragment_compositions
 
-    override fun getViewModel() = ViewModelProviders.of(this).get(CompositionsViewModel::class.java)
+    override fun getViewModel() = provideViewModel(CompositionsViewModel::class.java)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

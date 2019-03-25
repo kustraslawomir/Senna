@@ -1,8 +1,6 @@
 package com.senna.view.activity.splash
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProviders
 import com.senna.com.R
 import com.senna.model.fetchstates.GetCompositionsNetworkState
 import com.senna.utils.extensions.*
@@ -14,7 +12,7 @@ class SplashActivity : BaseActivity() {
 
     override fun getContentView() = R.layout.activity_splash
 
-    override fun getViewModel() = ViewModelProviders.of(this).get(SplashViewModel::class.java)
+    override fun getViewModel() = provideViewModel(SplashViewModel::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
