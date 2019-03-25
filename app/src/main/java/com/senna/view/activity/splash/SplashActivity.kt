@@ -18,8 +18,8 @@ class SplashActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         val viewModel = getViewModel()
-        observeNavigationEvent(viewModel)
         observeNetworkState(viewModel)
+        observeNavigationEvent(viewModel)
     }
 
     private fun observeNetworkState(viewModel: SplashViewModel) {
