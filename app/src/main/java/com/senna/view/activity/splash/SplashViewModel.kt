@@ -9,7 +9,6 @@ import com.senna.model.fetchstates.GetCompositionsNetworkState
 import com.senna.usecases.compositions.FetchPublicCompositionsUseCase
 import com.senna.usecases.compositions.GetStoredCompositionsUseCase
 import com.senna.usecases.compositions.StorePublicCompositionsUseCase
-import com.senna.usecases.delays.SplashDelayUseCase
 import com.senna.utils.livedata.Event
 import javax.inject.Inject
 
@@ -20,11 +19,9 @@ class SplashViewModel : ViewModel(), LifecycleObserver {
     @Inject
     lateinit var storePublicCompositionsUseCase: StorePublicCompositionsUseCase
     @Inject
-    lateinit var navigateToMainScreenAfterDelayUseCase: SplashDelayUseCase
-    @Inject
     lateinit var getStoredCompositionsUseCase: GetStoredCompositionsUseCase
 
-    private val navigateToMainScreenEvent = MutableLiveData<Event<Boolean>>()
+    private val shouldOpenNavigationScreen = MutableLiveData<Event<Boolean>>()
 
     private val fetchingStatus = MutableLiveData<GetCompositionsNetworkState>()
 
@@ -33,25 +30,25 @@ class SplashViewModel : ViewModel(), LifecycleObserver {
 
        if (compositionsAreEmpty())
             fetchPublicCompositions()
-        else startSplashDelay()
+        else openNavigationScreen()
     }
 
     private fun fetchPublicCompositions() = fetchDefaultCompositionsUseCase.fetchPublicCompositions(::onFetchingStatusChange)
 
     private fun onFetchingStatusChange(result: GetCompositionsNetworkState) {
         when (result) {
-            is GetCompositionsNetworkState.Success -> storePublicCompositionsUseCase.storeCompositions(result.publicCompositions, ::startSplashDelay)
+            is GetCompositionsNetworkState.Success -> storePublicCompositionsUseCase.storeCompositions(result.publicCompositions, ::storeCompositionsCompleted)
             is GetCompositionsNetworkState.Error, GetCompositionsNetworkState.Loading -> fetchingStatus.value = result
         }
     }
 
-    private fun startSplashDelay() = navigateToMainScreenAfterDelayUseCase.startSplashScreenDelay(::onSplashScreenDelayEnded)
+    private fun storeCompositionsCompleted() = openNavigationScreen()
 
-    private fun onSplashScreenDelayEnded() {
-        navigateToMainScreenEvent.value = Event(value = true)
+    private fun openNavigationScreen() {
+        shouldOpenNavigationScreen.value = Event(value = true)
     }
 
-    fun getNavigateToMainScreenEvent(): LiveData<Event<Boolean>> = navigateToMainScreenEvent
+    fun getShouldOpenNavigationScreen(): LiveData<Event<Boolean>> = shouldOpenNavigationScreen
 
     fun getFetchingStatus(): LiveData<GetCompositionsNetworkState> = fetchingStatus
 

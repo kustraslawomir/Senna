@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class StorePublicCompositionsUseCase @Inject constructor(private val dataBase: DataBase) {
 
-    fun storeCompositions(firebaseComposition: PublicCompositions, startSplashScreenDelay: () -> Unit) {
+    fun storeCompositions(firebaseComposition: PublicCompositions, storeCompositionsCompleted: () -> Unit) {
         val compositions = firebaseComposition.compositions
 
         if (!compositions.isNullOrEmpty()) {
@@ -17,7 +17,7 @@ class StorePublicCompositionsUseCase @Inject constructor(private val dataBase: D
                 storeComposition(composition)
             }
         }
-        startSplashScreenDelay()
+        storeCompositionsCompleted()
     }
 
     private fun clearCompositionsInDatabase() {
