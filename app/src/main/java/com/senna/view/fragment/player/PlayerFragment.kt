@@ -2,7 +2,6 @@ package com.senna.view.fragment.player
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProviders
 import com.example.playerview.PlayerStateCallBack
 import com.senna.com.R
 import com.senna.model.databse.Composition
@@ -12,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_player.*
 
 class PlayerFragment : BaseFragment(), PlayerStateCallBack {
 
-    override fun getViewModel() = ViewModelProviders.of(this).get(PlayerViewModel::class.java)
+    override fun getViewModel() = provideViewModel(PlayerViewModel::class.java)
 
     private lateinit var viewModel: PlayerViewModel
 
@@ -26,6 +25,7 @@ class PlayerFragment : BaseFragment(), PlayerStateCallBack {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = getViewModel()
+
         val bundle = arguments
         if (bundle != null) {
             val composition : Composition? = bundle.getParcelable(COMPOSITION)

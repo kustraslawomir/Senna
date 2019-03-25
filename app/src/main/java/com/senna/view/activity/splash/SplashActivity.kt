@@ -1,7 +1,6 @@
 package com.senna.view.activity.splash
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProviders
 import com.senna.com.R
 import com.senna.model.fetchstates.GetCompositionsNetworkState
 import com.senna.utils.extensions.*
@@ -13,7 +12,7 @@ class SplashActivity : BaseActivity() {
 
     override fun getContentView() = R.layout.activity_splash
 
-    override fun getViewModel() = ViewModelProviders.of(this).get(SplashViewModel::class.java)
+    override fun getViewModel() = provideViewModel(SplashViewModel::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +23,11 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun observeNetworkState(viewModel: SplashViewModel) {
-        viewModel.getFetchingStatus().listen(this) { getCompositionsNetworkState ->
+        viewModel.getFetchingStatus().listen(this) { fetchingStatus ->
             hideProgressBar()
-            when (getCompositionsNetworkState) {
+            when (fetchingStatus) {
                 is GetCompositionsNetworkState.Loading -> showProgressBar()
-                is GetCompositionsNetworkState.Error -> showError(getCompositionsNetworkState.errorMessage)
+                is GetCompositionsNetworkState.Error -> showError(fetchingStatus.errorMessage)
             }
         }
     }
@@ -40,15 +39,9 @@ class SplashActivity : BaseActivity() {
         }
     }
 
-    private fun showProgressBar() {
-        lottieLoading.show()
-    }
+    private fun showProgressBar() = lottieLoading.show()
 
-    private fun hideProgressBar() {
-        lottieLoading.hide()
-    }
+    private fun hideProgressBar() = lottieLoading.hide()
 
-    private fun showError(errorMessage: String) {
-        splashContainer.snack(errorMessage)
-    }
+    private fun showError(errorMessage: String) = splashContainer.snack(errorMessage)
 }
