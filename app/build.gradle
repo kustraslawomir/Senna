@@ -1,12 +1,9 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: "androidx.navigation.safeargs"
-
 apply plugin: 'kotlin-kapt'
+apply plugin: 'de.mannodermaus.android-junit5'
 
 project.ext {
     multiDex = "1.0.3"
@@ -30,6 +27,8 @@ project.ext {
     gson = "2.8.5"
     okhttpInterveptor = "3.12.1"
     timber = "4.7.1"
+
+    junit = "5.3.2"
 }
 
 android {
@@ -69,6 +68,10 @@ allprojects {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':playerview')
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$project.junit"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$project.junit"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:$project.junit"
 
     implementation "com.android.support:multidex:$project.multiDex"
 
