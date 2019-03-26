@@ -10,9 +10,9 @@ import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : BaseActivity() {
 
-    override fun getContentView() = R.layout.activity_splash
-
     override fun getViewModel() = provideViewModel(SplashViewModel::class.java)
+
+    override fun getContentView() = R.layout.activity_splash
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -19,7 +19,7 @@ class SennaApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         initializeDagger()
-        if(BuildConfig.DEBUG){
+        if (BuildConfig.DEBUG) {
             Stetho.initializeWithDefaults(this)
             Timber.plant(Timber.DebugTree())
         }

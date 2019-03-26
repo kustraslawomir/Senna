@@ -12,26 +12,22 @@ import com.senna.usecases.compositions.StorePublicCompositionsUseCase
 import com.senna.utils.livedata.Event
 import javax.inject.Inject
 
-class SplashViewModel : ViewModel(), LifecycleObserver {
-
-    @Inject
-    lateinit var fetchDefaultCompositionsUseCase: FetchPublicCompositionsUseCase
-    @Inject
-    lateinit var storePublicCompositionsUseCase: StorePublicCompositionsUseCase
-    @Inject
-    lateinit var getStoredCompositionsUseCase: GetStoredCompositionsUseCase
-
-    private val shouldOpenNavigationScreen = MutableLiveData<Event<Boolean>>()
-
-    private val fetchingStatus = MutableLiveData<GetCompositionsNetworkState>()
+class SplashViewModel @Inject constructor(private var fetchDefaultCompositionsUseCase: FetchPublicCompositionsUseCase,
+                                          private var storePublicCompositionsUseCase: StorePublicCompositionsUseCase,
+                                          private var getStoredCompositionsUseCase: GetStoredCompositionsUseCase) : ViewModel(), LifecycleObserver {
 
     init {
         SennaApplication.component.inject(viewModel = this)
 
-       if (compositionsAreEmpty())
-            fetchPublicCompositions()
-        else openNavigationScreen()
+        when (compositionsAreNullOrEmpty()) {
+            true -> fetchPublicCompositions()
+            false -> openNavigationScreen()
+        }
     }
+
+    private val shouldOpenNavigationScreen = MutableLiveData<Event<Boolean>>()
+
+    private val fetchingStatus = MutableLiveData<GetCompositionsNetworkState>()
 
     private fun fetchPublicCompositions() = fetchDefaultCompositionsUseCase.fetchPublicCompositions(::onFetchingStatusChange)
 
@@ -52,5 +48,5 @@ class SplashViewModel : ViewModel(), LifecycleObserver {
 
     fun getFetchingStatus(): LiveData<GetCompositionsNetworkState> = fetchingStatus
 
-    private fun compositionsAreEmpty() = getStoredCompositionsUseCase.getCompositionsSize() == 0
+    private fun compositionsAreNullOrEmpty() = getStoredCompositionsUseCase.compositionsAreNullOrEmpty()
 }

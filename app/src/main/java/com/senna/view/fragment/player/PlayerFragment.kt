@@ -11,9 +11,9 @@ import kotlinx.android.synthetic.main.fragment_player.*
 
 class PlayerFragment : BaseFragment(), PlayerStateCallBack {
 
-    override fun getViewModel() = provideViewModel(PlayerViewModel::class.java)
-
     private lateinit var viewModel: PlayerViewModel
+
+    override fun getViewModel() = provideViewModel(PlayerViewModel::class.java)
 
     override fun getLayoutId() = R.layout.fragment_player
 
@@ -28,18 +28,15 @@ class PlayerFragment : BaseFragment(), PlayerStateCallBack {
 
         val bundle = arguments
         if (bundle != null) {
-            val composition : Composition? = bundle.getParcelable(COMPOSITION)
+            val composition: Composition? = bundle.getParcelable(COMPOSITION)
             if (composition != null) {
                 viewModel.setPlayerSource(composition.sounds)
             }
         }
     }
 
-    override fun pauseClick() {
-        viewModel.pause()
-    }
+    override fun pauseClick() = viewModel.pause()
 
-    override fun playClick() {
-        viewModel.play()
-    }
+    override fun playClick() = viewModel.play()
+
 }

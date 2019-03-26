@@ -6,26 +6,16 @@ import com.senna.usecases.player.PlayerControlUseCase
 import com.senna.usecases.player.SetPlayerSoundSourceUseCase
 import javax.inject.Inject
 
-class PlayerViewModel : ViewModel() {
-
-    @Inject
-    lateinit var playerSourceSoundsUseCase: SetPlayerSoundSourceUseCase
-    @Inject
-    lateinit var playerControlUseCase: PlayerControlUseCase
+class PlayerViewModel @Inject constructor(private var playerSourceSoundsUseCase: SetPlayerSoundSourceUseCase,
+                                          private var playerControlUseCase: PlayerControlUseCase) : ViewModel() {
 
     init {
         SennaApplication.component.inject(this)
     }
 
-    fun setPlayerSource(sounds: List<String>) {
-        playerSourceSoundsUseCase.setPlayerSource(sounds)
-    }
+    fun setPlayerSource(sounds: List<String>) = playerSourceSoundsUseCase.setPlayerSource(sounds)
 
-    fun play() {
-        playerControlUseCase.resume()
-    }
+    fun play() = playerControlUseCase.resume()
 
-    fun pause() {
-        playerControlUseCase.pause()
-    }
+    fun pause() = playerControlUseCase.pause()
 }
