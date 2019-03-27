@@ -1,4 +1,4 @@
-package com.example.playerview
+package com.senna.utils.customview.playerview
 
 import android.content.Context
 import android.graphics.Color
@@ -6,9 +6,10 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
+import com.senna.com.R
 import kotlinx.android.synthetic.main.controls_ui.view.*
-import slawomir.kustra.starrysky.utils.Constants.Companion.PAUSE
-import slawomir.kustra.starrysky.utils.Constants.Companion.RESUME
+import com.senna.utils.customview.playerview.utils.PlayerConstants.Companion.PAUSE
+import com.senna.utils.customview.playerview.utils.PlayerConstants.Companion.RESUME
 import kotlin.properties.Delegates
 
 open class PlayerView : FrameLayout {

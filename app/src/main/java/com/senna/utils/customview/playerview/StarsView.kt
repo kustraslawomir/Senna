@@ -1,4 +1,4 @@
-package com.example.playerview
+package com.senna.utils.customview.playerview
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -6,8 +6,9 @@ import android.graphics.*
 import android.os.Handler
 import android.util.AttributeSet
 import android.widget.FrameLayout
-import slawomir.kustra.starrysky.utils.*
 
+import com.senna.com.R
+import com.senna.utils.customview.playerview.utils.*
 
 internal class StarsView : FrameLayout {
 
@@ -49,8 +50,8 @@ internal class StarsView : FrameLayout {
     }
 
     constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int) : super(
-        context, attributeSet,
-        defStyleAttr
+            context, attributeSet,
+            defStyleAttr
     ) {
         init(context)
     }
@@ -58,9 +59,9 @@ internal class StarsView : FrameLayout {
     fun scaleBitmapAndKeepRation(targetBmp: Bitmap, reqHeightInPixels: Int, reqWidthInPixels: Int): Bitmap {
         val matrix = Matrix()
         matrix.setRectToRect(
-            RectF(0f, 0f, targetBmp.width.toFloat(), targetBmp.height.toFloat()),
-            RectF(0f, 0f, reqWidthInPixels.toFloat(), reqHeightInPixels.toFloat()),
-            Matrix.ScaleToFit.CENTER
+                RectF(0f, 0f, targetBmp.width.toFloat(), targetBmp.height.toFloat()),
+                RectF(0f, 0f, reqWidthInPixels.toFloat(), reqHeightInPixels.toFloat()),
+                Matrix.ScaleToFit.CENTER
         )
         return Bitmap.createBitmap(targetBmp, 0, 0, targetBmp.width, targetBmp.height, matrix, true)
     }

@@ -1,4 +1,4 @@
-package com.example.playerview;
+package com.senna.utils.customview.playerview;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.playerview.test", appContext.getPackageName());
+        assertEquals("com.senna.view.customs.playerview.test", appContext.getPackageName());
     }
 }

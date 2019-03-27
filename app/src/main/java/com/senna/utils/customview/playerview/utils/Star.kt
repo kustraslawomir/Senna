@@ -1,4 +1,4 @@
-package slawomir.kustra.starrysky.utils
+package com.senna.utils.customview.playerview.utils
 
 import android.graphics.Bitmap
 

@@ -2,7 +2,7 @@ package com.senna.view.fragment.player
 
 import android.os.Bundle
 import android.view.View
-import com.example.playerview.PlayerStateCallBack
+import com.senna.utils.customview.playerview.PlayerStateCallBack
 import com.senna.com.R
 import com.senna.model.databse.Composition
 import com.senna.utils.Constants.Companion.COMPOSITION

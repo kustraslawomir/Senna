@@ -1,4 +1,4 @@
-package com.example.playerview
+package com.senna.utils.customview.playerview
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -10,6 +10,7 @@ import android.os.Handler
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
+import com.senna.com.R
 
 class VinylView : View {
 

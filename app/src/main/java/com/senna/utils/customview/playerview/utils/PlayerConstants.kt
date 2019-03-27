@@ -1,6 +1,6 @@
-package slawomir.kustra.starrysky.utils
+package com.senna.utils.customview.playerview.utils
 
-class Constants {
+class PlayerConstants {
     companion object {
         const val STARS_SIZE = 10
         const val PROPERTY_ROTATE = "rotate"

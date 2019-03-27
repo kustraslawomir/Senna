@@ -1,4 +1,4 @@
-package com.example.playerview;
+package com.senna.utils.customview.playerview;
 
 import org.junit.Test;
 
