@@ -1,4 +1,4 @@
-package com.senna.view.activity
+package com.senna.view.activity.base
 
 import android.annotation.SuppressLint
 import android.os.Bundle

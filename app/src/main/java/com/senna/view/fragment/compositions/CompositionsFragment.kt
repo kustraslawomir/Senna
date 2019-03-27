@@ -8,7 +8,7 @@ import com.senna.utils.Constants.Companion.COMPOSITION
 import com.senna.utils.extensions.listen
 import com.senna.utils.extensions.setPaddingFromNavBar
 import com.senna.utils.extensions.startEnterAnimation
-import com.senna.view.fragment.BaseFragment
+import com.senna.view.fragment.base.BaseFragment
 import com.senna.view.fragment.compositions.adapter.CompositionsAdapter
 import com.senna.view.fragment.player.PlayerFragment
 import kotlinx.android.synthetic.main.fragment_compositions.*

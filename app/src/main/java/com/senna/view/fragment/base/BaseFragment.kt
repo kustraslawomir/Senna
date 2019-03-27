@@ -1,4 +1,4 @@
-package com.senna.view.fragment
+package com.senna.view.fragment.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
