@@ -2,11 +2,11 @@ package com.senna.view.fragment.player
 
 import android.os.Bundle
 import android.view.View
-import com.example.playerview.PlayerStateCallBack
+import com.senna.utils.customview.playerview.PlayerStateCallBack
 import com.senna.com.R
 import com.senna.model.databse.Composition
 import com.senna.utils.Constants.Companion.COMPOSITION
-import com.senna.view.fragment.BaseFragment
+import com.senna.view.fragment.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_player.*
 
 class PlayerFragment : BaseFragment(), PlayerStateCallBack {

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.senna.com.R
 import com.senna.utils.extensions.replaceFragment
-import com.senna.view.activity.BaseActivity
+import com.senna.view.activity.base.BaseActivity
 import com.senna.view.fragment.compositions.CompositionsFragment
 
 class NavigationActivity : BaseActivity() {

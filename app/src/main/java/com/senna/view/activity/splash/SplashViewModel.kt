@@ -9,7 +9,9 @@ import com.senna.model.fetchstates.GetCompositionsNetworkState
 import com.senna.usecases.compositions.FetchPublicCompositionsUseCase
 import com.senna.usecases.compositions.GetStoredCompositionsUseCase
 import com.senna.usecases.compositions.StorePublicCompositionsUseCase
+import com.senna.utils.extensions.default
 import com.senna.utils.livedata.Event
+import timber.log.Timber
 import javax.inject.Inject
 
 class SplashViewModel : ViewModel(), LifecycleObserver {
@@ -21,6 +23,10 @@ class SplashViewModel : ViewModel(), LifecycleObserver {
     @Inject
     lateinit var getStoredCompositionsUseCase: GetStoredCompositionsUseCase
 
+    private val shouldOpenNavigationScreen = MutableLiveData<Event<Boolean>>()
+
+    private val fetchingStatus = MutableLiveData<GetCompositionsNetworkState>().default(GetCompositionsNetworkState.Loading)
+
     init {
         SennaApplication.component.inject(viewModel = this)
 
@@ -29,10 +35,6 @@ class SplashViewModel : ViewModel(), LifecycleObserver {
             false -> openNavigationScreen()
         }
     }
-
-    private val shouldOpenNavigationScreen = MutableLiveData<Event<Boolean>>()
-
-    private val fetchingStatus = MutableLiveData<GetCompositionsNetworkState>()
 
     private fun fetchPublicCompositions() = fetchDefaultCompositionsUseCase.fetchPublicCompositions(::onFetchingStatusChange)
 

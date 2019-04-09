@@ -8,10 +8,8 @@ import javax.inject.Inject
 
 class PlayerViewModel : ViewModel() {
 
-    @Inject
-    lateinit var playerSourceSoundsUseCase: SetPlayerSoundSourceUseCase
-    @Inject
-    lateinit var playerControlUseCase: PlayerControlUseCase
+    @Inject lateinit var playerSourceSoundsUseCase: SetPlayerSoundSourceUseCase
+    @Inject lateinit var playerControlUseCase: PlayerControlUseCase
 
     init {
         SennaApplication.component.inject(this)

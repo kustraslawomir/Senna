@@ -75,7 +75,6 @@ allprojects {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':playerview')
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:$project.junit"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$project.junit"
