@@ -12,9 +12,14 @@ import com.senna.usecases.compositions.StorePublicCompositionsUseCase
 import com.senna.utils.livedata.Event
 import javax.inject.Inject
 
-class SplashViewModel @Inject constructor(private var fetchDefaultCompositionsUseCase: FetchPublicCompositionsUseCase,
-                                          private var storePublicCompositionsUseCase: StorePublicCompositionsUseCase,
-                                          private var getStoredCompositionsUseCase: GetStoredCompositionsUseCase) : ViewModel(), LifecycleObserver {
+class SplashViewModel : ViewModel(), LifecycleObserver {
+
+    @Inject
+    lateinit var fetchDefaultCompositionsUseCase: FetchPublicCompositionsUseCase
+    @Inject
+    lateinit var storePublicCompositionsUseCase: StorePublicCompositionsUseCase
+    @Inject
+    lateinit var getStoredCompositionsUseCase: GetStoredCompositionsUseCase
 
     init {
         SennaApplication.component.inject(viewModel = this)

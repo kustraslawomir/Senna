@@ -12,5 +12,5 @@ class GetStoredCompositionsUseCase @Inject constructor(private val dataBase: Dat
             setCompositions(compositions)
     }
 
-    fun compositionsAreNullOrEmpty() = dataBase.compositionDao().compositions.isNullOrEmpty()
+    fun compositionsAreNullOrEmpty() = dataBase.compositionDao().compositions?.isEmpty() ?: true
 }

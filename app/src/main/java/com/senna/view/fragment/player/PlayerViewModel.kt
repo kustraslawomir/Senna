@@ -6,8 +6,12 @@ import com.senna.usecases.player.PlayerControlUseCase
 import com.senna.usecases.player.SetPlayerSoundSourceUseCase
 import javax.inject.Inject
 
-class PlayerViewModel @Inject constructor(private var playerSourceSoundsUseCase: SetPlayerSoundSourceUseCase,
-                                          private var playerControlUseCase: PlayerControlUseCase) : ViewModel() {
+class PlayerViewModel : ViewModel() {
+
+    @Inject
+    lateinit var playerSourceSoundsUseCase: SetPlayerSoundSourceUseCase
+    @Inject
+    lateinit var playerControlUseCase: PlayerControlUseCase
 
     init {
         SennaApplication.component.inject(this)
